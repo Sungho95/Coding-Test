@@ -40,8 +40,8 @@ return 값이 1 이상 2,000,000,000 이하의 정수가 되는 올바른 입력
 입출력 예 #4
 
 s에는 영단어로 바뀐 부분이 없습니다.
-
 */
+
 lass Solution {
     public int solution(String s) {
 
