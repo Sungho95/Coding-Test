@@ -22,10 +22,10 @@ public static void main(String[] args){
 
 ```python
 def study(effort):
-	if effort >= 100:
-		return 'success'
-	else:
-		return 'failure'
+    if effort >= 100:
+	return 'success'
+    else:
+	return 'failure'
 
 my_effort = ?
 print(effort(my_effort))
@@ -34,8 +34,3 @@ print(effort(my_effort))
 
 
 노력 100 이상인 사람이 되자.
-
-
-
-​	
-
