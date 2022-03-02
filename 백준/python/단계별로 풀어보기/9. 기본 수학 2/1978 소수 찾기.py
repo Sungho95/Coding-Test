@@ -12,6 +12,7 @@ for i in range(n):
         for j in range(2, decimal[i]):
             if decimal[i] % j == 0:
                 temp = -1
+                break
         if temp == 0:
             count += 1
 
