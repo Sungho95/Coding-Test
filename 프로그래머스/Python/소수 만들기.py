@@ -8,7 +8,6 @@ def is_prime(num):
             return False
     return True
 
-
 def solution(nums):
     answer = 0
     prime_number = []
