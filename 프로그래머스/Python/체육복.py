@@ -11,11 +11,6 @@ def solution(n, lost, reserve):
             answer += 1
 
     for i in range(len(lost)):
-
-        if lost[i] in reserve:
-            lost.remove(lost[i])
-            reserve.remove(lost[i])
-            answer += 1
         if lost[i] - 1 in reserve:
             answer += 1
             reserve.remove(lost[i] - 1)
