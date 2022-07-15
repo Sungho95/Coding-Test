@@ -1,5 +1,4 @@
 def solution(nums):
-    answer = 0
     possible = len(nums) // 2
     value = len(set(nums))
 
