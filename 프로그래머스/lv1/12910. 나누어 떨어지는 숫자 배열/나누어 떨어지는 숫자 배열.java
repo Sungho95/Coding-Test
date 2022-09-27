@@ -10,12 +10,17 @@ class Solution {
             }
         }
         
-        int[] answer = new int[arrList.size()];
-        
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = arrList.get(i);
-        }
+        int[] answer = arrList.stream()
+            .mapToInt(i -> i)
+            .toArray();
         Arrays.sort(answer);
+        
+//         int[] answer = new int[arrList.size()];
+        
+//         for (int i = 0; i < answer.length; i++) {
+//             answer[i] = arrList.get(i);
+//         }
+//         Arrays.sort(answer);
         
         return answer.length == 0 ? new int[]{-1} : answer;
     }
