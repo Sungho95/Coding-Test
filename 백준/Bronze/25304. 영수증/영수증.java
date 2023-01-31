@@ -1,22 +1,22 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        int x = s.nextInt();
-        int n = s.nextInt();
 
-        for (int i = 1; i <= n; i++) {
-            int a = s.nextInt();
-            int b = s.nextInt();
-
-            x = x - (a * b);
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int n = sc.nextInt();
+        
+        for (int i = 0; i < n; i++) {
+            x -= sc.nextInt() * sc.nextInt();
         }
-
+        sc.close();
+        
         if (x == 0) {
             System.out.println("Yes");
         } else {
             System.out.println("No");
         }
+
     }
 }
