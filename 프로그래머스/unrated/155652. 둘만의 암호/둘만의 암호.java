@@ -1,28 +1,25 @@
 class Solution {
     public String solution(String s, String skip, int index) {
-        String answer = "";
-        
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
+        StringBuilder sb = new StringBuilder();
+
+        for (char ch : s.toCharArray()) {
             
-            for (int j = 0; j < index; j++) {
-                ch++;
-                
-                if (ch > 'z') {
+            int idx = 0;
+            while (idx < index) {
+                if (ch == 'z') {
                     ch = 'a';
+                } else {
+                    ch++;
                 }
                 
-                while (skip.contains(String.valueOf(ch))) {
-                    ch++;
-                    if (ch > 'z') {
-                    ch = 'a';
-                    }
+                if (!skip.contains(String.valueOf(ch))) {
+                    idx++;
                 }
             }
             
-            answer += ch;
+            sb.append(ch);
         }
         
-        return answer;
+        return sb.toString();
     }
 }
