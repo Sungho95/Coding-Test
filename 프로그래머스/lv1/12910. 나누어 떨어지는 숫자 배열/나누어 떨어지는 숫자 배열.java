@@ -12,8 +12,8 @@ class Solution {
         
         int[] answer = arrList.stream()
             .mapToInt(i -> i)
+            .sorted()
             .toArray();
-        Arrays.sort(answer);
         
         return answer.length == 0 ? new int[]{-1} : answer;
     }
