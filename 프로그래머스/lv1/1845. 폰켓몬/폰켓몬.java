@@ -13,7 +13,6 @@ class Solution {
         // 최대 종류
         int value = nums.length;
         
-        if (possible >= value) return value;
-        else return possible; 
+        return possible >= value ? value : possible;
     }
 }
