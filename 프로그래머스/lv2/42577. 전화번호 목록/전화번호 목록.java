@@ -1,35 +1,24 @@
-import java.util.*;
+import java.util.HashMap;
 
 class Solution {
     public boolean solution(String[] phone_book) {
-        
-//         Arrays.sort(phone_book);
-        
-//         for (int i = 0; i < phone_book.length - 1; i++) {
-//             if (phone_book[i + 1].startsWith(phone_book[i])) {
-//                 return false;
-//             }
-//         }
-        
-        // return true;
-        
-        boolean answer = true;
-        
-        Map<String, Integer> map = new HashMap<>();
+        HashMap<String, Integer> hashMap = new HashMap<>();
 
-        for(int i = 0; i < phone_book.length; i++) {
-            map.put(phone_book[i], i);
+        // 모든 phone 번호 hashMap에 담기
+        for (int i = 0; i < phone_book.length; i++) {
+            hashMap.put(phone_book[i], i);
         }
 
-        for(int i = 0; i < phone_book.length; i++) {
-            for(int j = 0; j < phone_book[i].length(); j++) {
-                if(map.containsKey(phone_book[i].substring(0,j))) {
-                    answer = false;
-                    return answer;
+        for (int i = 0; i < phone_book.length; i++) {
+            // 전화번호의 길이만큼 순회
+            for (int j = 0; j < phone_book[i].length(); j++) {
+                // 해당 전화번호의 접두어가 key로 가진 경우
+                if (hashMap.containsKey(phone_book[i].substring(0,j))) {
+                    return false;
                 }
             }
         }
-        
-        return answer;
+
+        return true;
     }
 }
