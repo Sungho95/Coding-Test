@@ -13,11 +13,7 @@ public class Solution {
                 list.add(arr[i]);
             }
         }
-        
-        int[] answer = list.stream()
-            .mapToInt(i -> i)
-            .toArray();
 
-        return answer;
+        return list.stream().mapToInt(i -> i).toArray();
     }
 }
