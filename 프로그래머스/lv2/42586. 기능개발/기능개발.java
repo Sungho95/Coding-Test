@@ -2,17 +2,50 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        
-        int[] work = new int[100];
-        int day = 0;
-        
+   
+        ArrayList<Integer> list = new ArrayList<>();
+        Queue<Integer> q = new LinkedList<>();
+
         for (int i = 0; i < progresses.length; i++) {
-            while (progresses[i] + (speeds[i] * day) < 100) {
-                day++;
+            if ((100 - progresses[i]) % speeds[i] == 0) {
+                q.add((100 - progresses[i]) / speeds[i]);
+            } else {
+                q.add((100 - progresses[i]) / speeds[i] + 1);
             }
-            work[day]++;
         }
+
+        int x = q.poll();
+        int count = 1;
+        while (!q.isEmpty()) {
+            if (x >= q.peek()) {
+                count++;
+                q.poll();
+            } else {
+                list.add(count);
+                count = 1;
+                x = q.poll();
+            }
+        }
+        list.add(count);
+
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = list.get(i);
+        }
+
+
+        return answer;
         
-        return Arrays.stream(work).filter(i -> i != 0).toArray();
+//         int[] work = new int[100];
+//         int day = 0;
+        
+//         for (int i = 0; i < progresses.length; i++) {
+//             while (progresses[i] + (speeds[i] * day) < 100) {
+//                 day++;
+//             }
+//             work[day]++;
+//         }
+        
+//         return Arrays.stream(work).filter(i -> i != 0).toArray();
     }
 }
