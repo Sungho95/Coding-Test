@@ -2,50 +2,38 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-   
-        ArrayList<Integer> list = new ArrayList<>();
-        Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<>();
+        List<Integer> answer = new ArrayList<>();
 
+        // 배포까지 필요한 날짜 Queue에 담기
         for (int i = 0; i < progresses.length; i++) {
+            // 필요한 날짜를 속도로 나눈 나머지가 0이면 당일 배포 가능
             if ((100 - progresses[i]) % speeds[i] == 0) {
-                q.add((100 - progresses[i]) / speeds[i]);
-            } else {
-                q.add((100 - progresses[i]) / speeds[i] + 1);
+                queue.offer((100 - progresses[i]) / speeds[i]);
+            } else { // 나머지가 0이 아니면 다음날 배포해야 함
+                queue.offer(((100 - progresses[i]) / speeds[i]) + 1);
             }
         }
+        System.out.println(queue);
 
-        int x = q.poll();
+        // 첫 번째 기능 배포 날짜
+        int now = queue.poll();
         int count = 1;
-        while (!q.isEmpty()) {
-            if (x >= q.peek()) {
+
+        // queue가 빌 때까지 반복
+        while (!queue.isEmpty()) {
+            // 현재 배포 날짜가 queue의 다음 기능의 배포날짜보다 크면 추가
+            if (now >= queue.peek()) {
                 count++;
-                q.poll();
-            } else {
-                list.add(count);
-                count = 1;
-                x = q.poll();
+                queue.poll();
+            } else { // 현재 배포 날짜가 queue의 다음 기능 날짜보다 작으면
+                answer.add(count); // count answer에 담기
+                count = 1; // count 초기화
+                now = queue.poll(); // 다음 배포날짜
             }
         }
-        list.add(count);
+        answer.add(count); // 마지막 count 담기
 
-        int[] answer = new int[list.size()];
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = list.get(i);
-        }
-
-
-        return answer;
-        
-//         int[] work = new int[100];
-//         int day = 0;
-        
-//         for (int i = 0; i < progresses.length; i++) {
-//             while (progresses[i] + (speeds[i] * day) < 100) {
-//                 day++;
-//             }
-//             work[day]++;
-//         }
-        
-//         return Arrays.stream(work).filter(i -> i != 0).toArray();
+        return answer.stream().mapToInt(i -> i).toArray();
     }
 }
