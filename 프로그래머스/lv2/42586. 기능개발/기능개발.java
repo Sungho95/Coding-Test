@@ -14,7 +14,6 @@ class Solution {
                 queue.offer(((100 - progresses[i]) / speeds[i]) + 1);
             }
         }
-        System.out.println(queue);
 
         // 첫 번째 기능 배포 날짜
         int now = queue.poll();
