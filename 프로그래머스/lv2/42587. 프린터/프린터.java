@@ -2,27 +2,24 @@ import java.util.PriorityQueue;
 import java.util.Collections;
 
 class Solution {
-    public int solution(int[] priorities, int location) {
-        // [2, 1, 3, 2], location = 2
-        // [3, 2, 2, 1]
-        // 
-        int answer = 0;
-        
+        public int solution(int[] priorities, int location) {
+        // 우선순위 큐 선언(내림 차순)
         PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
-        
+        int answer = 0;
+
         for (int i : priorities) {
-            queue.add(i);
+            queue.offer(i);
         }
-        
-        while(!queue.isEmpty()) {
-            
+
+        while (!queue.isEmpty()) {
             for (int i = 0; i < priorities.length; i++) {
-                
                 if (queue.peek() == priorities[i]) {
                     queue.poll();
                     answer++;
                     
-                    if (location == i) return answer;
+                    if (location == i) {
+                        return answer;
+                    }
                 }
             }
         }
