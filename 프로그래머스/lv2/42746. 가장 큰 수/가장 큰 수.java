@@ -10,6 +10,8 @@ class Solution {
             answer[i] = String.valueOf(numbers[i]);
         }
 
+        // compareTo : 비교 메서드
+        // 비교 후 정렬
         Arrays.sort(answer, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
 
         // 첫 번쨰 요소가 0이면 이후에 모든 요소도 0임
