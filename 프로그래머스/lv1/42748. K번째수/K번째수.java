@@ -1,19 +1,20 @@
 import java.util.Arrays;
+
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
         // 결과를 담을 answer 배열
         int[] answer = new int[commands.length];
-        int idx = 0;
 
         // i, j, k를 담은 배열 순회
-        for (int[] command : commands) {
-            // i - 1 번째 인덱스부터 j 까지
-            int[] temp = Arrays.copyOfRange(array, command[0] - 1, command[1]);
+        for (int i = 0; i < commands.length; i++) {
+            // i - 1번째 수부터 j까지 배열 추출
+            int[] temp = Arrays.copyOfRange(array, commands[i][0] - 1, commands[i][1]);
+            
+            // 추출한 배열 오름차순 정렬
             Arrays.sort(temp);
-
-            // k번째 수
-            answer[idx] = temp[command[2] - 1];
-            idx++;
+            
+            // k번째 수 answer 배열에 담기
+            answer[i] = temp[commands[i][2] - 1];
         }
 
         return answer;
