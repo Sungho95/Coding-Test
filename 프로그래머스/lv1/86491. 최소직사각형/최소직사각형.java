@@ -1,28 +1,28 @@
 class Solution {
     public int solution(int[][] sizes) {
-//         int w = 0;
-//         int h = 0;
+        int w = 0;
+        int h = 0;
         
-//         for (int i = 0; i < sizes.length; i++) {
-//             w = Math.max(w, Math.max(sizes[i][0], sizes[i][1]));
-//             h = Math.max(h, Math.min(sizes[i][0], sizes[i][1]));
-//         }
-        
-//         return w * h;
-        
-        int longLen = 0;
-        int shortLen = 0;
         for (int i = 0; i < sizes.length; i++) {
-            int w = sizes[i][0];
-            int h = sizes[i][1];
-            if (w > h) {
-                longLen = longLen < w ? w : longLen;
-                shortLen = shortLen < h ? h : shortLen;
-            } else {
-                longLen = longLen < h ? h : longLen;
-                shortLen = shortLen < w ? w : shortLen;
-            }
+            w = Math.max(w, Math.max(sizes[i][0], sizes[i][1]));
+            h = Math.max(h, Math.min(sizes[i][0], sizes[i][1]));
         }
-        return longLen * shortLen;
+        
+        return w * h;
+        
+        // int longLen = 0;
+        // int shortLen = 0;
+        // for (int i = 0; i < sizes.length; i++) {
+        //     int w = sizes[i][0];
+        //     int h = sizes[i][1];
+        //     if (w > h) {
+        //         longLen = longLen < w ? w : longLen;
+        //         shortLen = shortLen < h ? h : shortLen;
+        //     } else {
+        //         longLen = longLen < h ? h : longLen;
+        //         shortLen = shortLen < w ? w : shortLen;
+        //     }
+        // }
+        // return longLen * shortLen;
     }
 }
