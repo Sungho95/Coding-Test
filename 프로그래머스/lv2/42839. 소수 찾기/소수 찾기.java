@@ -4,9 +4,11 @@ class Solution {
     HashSet<Integer> set = new HashSet<>();
     public int solution(String numbers) {
         int answer = 0;
+        
         recursive("", numbers);
         
         Iterator<Integer> it = set.iterator();
+        
         while (it.hasNext()) {
             int number = it.next();
             
