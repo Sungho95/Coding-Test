@@ -1,41 +1,50 @@
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 class Solution {
-    HashSet<Integer> set = new HashSet<>();
     public int solution(String numbers) {
+        Set<Integer> set = new HashSet<>();
         int answer = 0;
-        
-        recursive("", numbers);
-        
+
+        recursive("", numbers, set);
+
         Iterator<Integer> it = set.iterator();
-        
+
         while (it.hasNext()) {
-            int number = it.next();
-            
-            if (isPrime(number)) answer++;
+            if (isPrime(it.next())) {
+                answer++;
+            }
         }
-        
-        
+
         return answer;
     }
-    
+
+    /**
+     * 소수 판별 메서드
+     */
     public boolean isPrime(int num) {
         if (num < 2) return false;
-        
+
         for (int i = 2; i <= (int) Math.sqrt(num); i++) {
             if (num % i == 0) {
                 return false;
             }
         }
-        
+
         return true;
     }
-    
-    public void recursive(String comb, String others) {
-        if (!comb.equals(""))
-            set.add(Integer.valueOf(comb));
 
-        for (int i = 0; i < others.length(); i++)
-            recursive(comb + others.charAt(i), others.substring(0, i) + others.substring(i + 1));
+    /**
+     * 순열
+     */
+    public void recursive(String prefix, String str, Set<Integer> set) {
+        if (!prefix.equals("")) {
+            set.add(Integer.parseInt(prefix));
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            recursive(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1), set);
+        }
     }
 }
