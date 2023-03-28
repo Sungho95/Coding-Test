@@ -24,11 +24,6 @@ class Solution {
             }
         }
         
-        
-        System.out.println(lostSet);
-        System.out.println(reserveSet);
-        
-        
         return n - lostSet.size();
     }
 }
