@@ -10,6 +10,10 @@ class Solution {
                 if (temp < number.charAt(j) - '0') {
                     temp = number.charAt(j) - '0';
                     idx = j + 1;
+                    
+                    if (temp == 9) {
+                        break;
+                    }
                 }
             }
             sb.append(temp);
