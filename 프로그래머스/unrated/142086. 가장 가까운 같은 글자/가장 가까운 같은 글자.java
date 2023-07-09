@@ -1,17 +1,19 @@
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 
 class Solution {
     public int[] solution(String s) {
+        // 결과를 담을 배열
         int[] answer = new int[s.length()];
+        Map<Character, Integer> map = new HashMap<>();
         
-        HashMap<Character, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
-            if (!hashMap.containsKey(s.charAt(i))) {
+            if (!map.containsKey(s.charAt(i))) {
                 answer[i] = -1;
-                hashMap.put(s.charAt(i), i);
+                map.put(s.charAt(i), i);
             } else {
-                answer[i] = i - hashMap.get(s.charAt(i));
-                hashMap.put(s.charAt(i), i);
+                answer[i] = i - map.get(s.charAt(i));
+                map.put(s.charAt(i), i);
             }
         }
         
