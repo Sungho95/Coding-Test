@@ -1,13 +1,16 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 class Solution {
     public int[] solution(int N, int[] stages) {
         // 실패율 = 도달했으나 클리어 못한사람 / 스테이지에 도달한 사람
         // N = 전체 스테이지 수, stages = 현재 멈춰있는 스테이지 번호
-        
+
         // N = 5, stages = [2, 1, 2, 6, 2, 4, 3, 3]
         // result = [3, 4, 2, 1, 5]
-        
+
         int[] currentStages = new int[N + 1];
         int[] clearStages = new int[N + 1];
 
@@ -20,18 +23,18 @@ class Solution {
             currentStages[stages[i] - 1] += 1;
         }
 
-        HashMap<Integer, Double> hashMap = new HashMap<>();
-        
+        Map<Integer, Double> map = new HashMap<>();
+
         for (int i = 0; i < N; i++) {
             if (currentStages[i] == 0 || clearStages[i] == 0) {
-                hashMap.put(i + 1, 0.0);
+                map.put(i + 1, 0.0);
             } else {
-                hashMap.put(i + 1, (double) currentStages[i] / (double) clearStages[i]);
+                map.put(i + 1, (double) currentStages[i] / (double) clearStages[i]);
             }
         }
-        
-        List<Integer> list = new ArrayList<>(hashMap.keySet());
-        Collections.sort(list, (o1, o2) -> Double.compare(hashMap.get(o2), hashMap.get(o1)));
+
+        List<Integer> list = new ArrayList<>(map.keySet());
+        list.sort((o1, o2) -> Double.compare(map.get(o2), map.get(o1)));
 
         return list.stream().mapToInt(i -> i).toArray();
     }
