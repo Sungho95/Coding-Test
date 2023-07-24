@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     public String solution(String X, String Y) {
         // 짝궁이 존재하지 않으면 -1
