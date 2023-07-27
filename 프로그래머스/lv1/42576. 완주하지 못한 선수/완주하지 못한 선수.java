@@ -16,11 +16,12 @@ class Solution {
             // 완주한 사람의 1명씩 제거
             hashMap.put(s, hashMap.get(s) - 1);
         }
-        
+
         for (String s : hashMap.keySet()) {
             // 완주하지 못한 사람
             if (hashMap.get(s) > 0) {
                 answer = s;
+                break;
             }
         }
 
