@@ -20,12 +20,12 @@ class Solution {
                     board[i][col] = 0;
                     answer += 2;
                     break;
+                } else {
+                    // 인형 뽑기
+                    stack.push(board[i][col]);
+                    board[i][col] = 0;
+                    break;
                 }
-                
-                // 인형 뽑기
-                stack.push(board[i][col]);
-                board[i][col] = 0;
-                break;
             }
         }
         
