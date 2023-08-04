@@ -10,9 +10,7 @@ class Solution {
         for (int i = 0; i < type.length; i++) {
             hashMap.put(type[i], 0);
         }
-        System.out.println(hashMap);
-        // ["AN", "CF", "MJ", "RT", "NA"]
-        // [5, 3, 2, 7, 5]
+
         for (int i = 0; i < survey.length; i++) {
             char left = survey[i].charAt(0);
             char right = survey[i].charAt(1);
@@ -25,7 +23,7 @@ class Solution {
             }
         }
         System.out.println(hashMap);
-        // {'R', 'T', 'C', 'F', 'J', 'M', 'A', 'N'}
+        
         for (int i = 0; i < type.length; i += 2) {
             char left = type[i];
             char right = type[i+1];
