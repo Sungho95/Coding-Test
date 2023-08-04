@@ -1,41 +1,41 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class Solution {
     public String solution(String[] survey, int[] choices) {
         String answer = "";
         char[] type = {'R', 'T', 'C', 'F', 'J', 'M', 'A', 'N'};
 
-        HashMap<Character, Integer> hashMap = new HashMap<>();
-        
-        for (int i = 0; i < type.length; i++) {
-            hashMap.put(type[i], 0);
-        }
+        Map<Character, Integer> map = new HashMap<>();
 
+        for (int i = 0; i < type.length; i++) {
+            map.put(type[i], 0);
+        }
+        
         for (int i = 0; i < survey.length; i++) {
             char left = survey[i].charAt(0);
             char right = survey[i].charAt(1);
             if (choices[i] == 4) {
                 continue;
             } else if (choices[i] < 4) {
-                hashMap.replace(left, hashMap.get(left) + (4 - choices[i]));
+                map.replace(left, map.get(left) + (4 - choices[i]));
             } else {
-                hashMap.replace(right, hashMap.get(right) + (choices[i] - 4));
+                map.replace(right, map.get(right) + (choices[i] - 4));
             }
         }
-        System.out.println(hashMap);
-        
+
         for (int i = 0; i < type.length; i += 2) {
             char left = type[i];
             char right = type[i+1];
-            if (hashMap.get(left) > hashMap.get(right)) {
+            if (map.get(left) > map.get(right)) {
                 answer += left;
-            } else if (hashMap.get(left) == hashMap.get(right)) {
+            } else if (map.get(left) == map.get(right)) {
                 answer += left;
             } else {
                 answer += right;
             }
         }
-        
+
         return answer;
     }
 }
