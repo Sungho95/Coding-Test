@@ -1,10 +1,21 @@
+import java.util.Stack;
+
 class Solution {
     boolean solution(String s) {
-        boolean answer = true;
+        // stack 선언
+        Stack<Character> stack = new Stack<>();
 
-        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-        System.out.println("Hello Java");
+        // String 순회
+        for (int i = 0; i < s.length(); i++) {
+            // 스택이 비어있지 않으면서 i번째 문자가 ) 이면 스택에서 값 빼기
+            if (!stack.empty() && s.charAt(i) == ')') {
+                stack.pop();
+            // 이 외의 경우 스택에 담기
+            } else {
+                stack.push(s.charAt(i));
+            }
+        }
 
-        return answer;
+        return stack.isEmpty();
     }
 }
