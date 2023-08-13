@@ -7,8 +7,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         int count = 0;
-        
-        for (int i = 1; i * i <= n; i++) {
+
+        for (int i = 1; i <= Math.sqrt(n); i++) {
             count++;
         }
 
