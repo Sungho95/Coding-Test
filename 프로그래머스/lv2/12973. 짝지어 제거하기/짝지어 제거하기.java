@@ -18,7 +18,6 @@ class Solution {
             }
         }
         
-        int answer = stack.isEmpty() ? 1 : 0;
-        return answer;
+        return stack.isEmpty() ? 1 : 0;
     }
 }
