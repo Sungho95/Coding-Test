@@ -9,9 +9,6 @@ class Solution {
             int row = i;
             int col = sum / row;
             
-            // // 가로의 길이가 세로보다 짧으면 안됨
-            // if (row > col) continue;
-            
             // 가로와 세로의 -2하여 곱한 것이 노란색 격자의 개수
             if ((row - 2) * (col - 2) == yellow) {
                 answer[0] = col;
