@@ -9,19 +9,16 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
-        
-        int result = factorial(n) / (factorial(n - k) * factorial(k));
-        System.out.println(result);
+
+        System.out.println(recursion(n, k));
 
     }
 
-    private static int factorial(int n) {
-        int result = 1;
-        
-        for (int i = 1; i <= n; i++) {
-            result *= i;
+    private static int recursion(int n, int k) {
+        if (n == k || k == 0) {
+            return 1;
         }
 
-        return result;
+        return recursion(n - 1, k - 1) + recursion(n - 1, k);
     }
 }
