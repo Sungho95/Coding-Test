@@ -9,7 +9,7 @@ class Solution {
         StringBuilder nums = new StringBuilder();
         StringBuilder answer = new StringBuilder();
 
-        for (int i = 0; nums.length() <= t * m; i++) {
+        for (int i = 0; nums.length() < t * m; i++) {
             nums.append(Integer.toString(i, n).toUpperCase());
         }
 
