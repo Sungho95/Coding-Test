@@ -16,11 +16,9 @@ class Solution {
         return answer;
     }
     
+    // a, b, c 중 가장 큰 값을 반환하는 메서드
     public int maxNumber(int a, int b, int c) {
-        int max = 0;
-        
-        max = Math.max(Math.max(a, b), c);
-        
-        return max;
+    
+        return Math.max(Math.max(a, b), c);
     }
 }
